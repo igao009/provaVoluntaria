@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Futebol para Todos - Voluntariado Social</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="apple-header header-animada">
+        <h1>Futebol para Todos</h1>
+        <p>Projeto Voluntário de Futebol Social</p>
+        <span class="projeto-nome">Plataforma "Futebol para Todos"</span>
+        <nav class="main-nav">
+            <button onclick="mostrarPagina('home')">Home</button>
+            <button onclick="mostrarPagina('jogadores')">Jogadores</button>
+            <button onclick="mostrarPagina('clubes')">Clubes/Olheiros</button>
+            <button onclick="mostrarPagina('login')">Login/Cadastro</button>
+        </nav>
+    </header>
+    <main>
+        <!-- HOME -->
+        <section id="pagina-home">
+            <!-- Apresentação do intuito do site -->
+            <section class="apresentacao apresentacao-animada">
+                <h2>Bem-vindo ao Futebol para Todos!</h2>
+                <p>
+                    Nosso objetivo é democratizar o acesso ao futebol para pessoas de todas as idades e classes sociais, especialmente para quem mais precisa. 
+                    Aqui, você pode cadastrar cidades, projetos e participantes, conectando voluntários e apaixonados pelo esporte em todo o Brasil.
+                </p>
+                <p>
+                    Junte-se a nós para transformar vidas através do esporte, promovendo inclusão, saúde e cidadania!
+                </p>
+                <p class="projeto-nome-destaque"><strong>Nome do Projeto:</strong> Futebol para Todos</p>
+            </section>
+            <!-- NOVA SEÇÃO FEED -->
+            <section id="feed" class="feed-section animar" style="animation-delay: 0.25s;">
+                <h2>Feed de Oportunidades e Novidades</h2>
+                <form id="form-feed" class="form-feed" onsubmit="adicionarPostFeed(event)">
+                    <input type="text" id="titulo-feed" placeholder="Título da postagem" required>
+                    <textarea id="mensagem-feed" placeholder="Compartilhe uma peneira, campeonato, oportunidade ou novidade..." required></textarea>
+                    <button type="submit">Publicar no Feed</button>
+                </form>
+                <div id="feed-lista"></div>
+            </section>
+        </section>
+        <!-- JOGADORES -->
+        <section id="pagina-jogadores" style="display:none;">
+            <h2>Jogadores Cadastrados</h2>
+            <form class="filtros-jogadores" onsubmit="filtrarJogadores(event)">
+                <input type="text" id="filtro-cidade-jogador" placeholder="Cidade">
+                <select id="filtro-posicao-jogador">
+                    <option value="">Todas as posições</option>
+                    <option>Atacante</option>
+                    <option>Zagueiro</option>
+                    <option>Goleiro</option>
+                    <option>Volante</option>
+                    <option>Lateral</option>
+                </select>
+                <button type="submit">Filtrar</button>
+            </form>
+            <div id="lista-jogadores"></div>
+            <button class="btn-cadastro" onclick="mostrarPagina('cadastro-jogador')">Cadastrar-se como Jogador</button>
+        </section>
+        <!-- PERFIL JOGADOR -->
+        <section id="pagina-perfil-jogador" style="display:none;">
+            <h2>Perfil do Jogador</h2>
+            <div id="perfil-jogador-detalhe"></div>
+            <button class="btn-voltar" onclick="mostrarPagina('jogadores')">Voltar</button>
+        </section>
+        <!-- CLUBES/OLHEIROS -->
+        <section id="pagina-clubes" style="display:none;">
+            <h2>Clubes, Empresários e Olheiros</h2>
+            <form class="filtros-clubes" onsubmit="filtrarClubes(event)">
+                <input type="text" id="filtro-cidade-clube" placeholder="Cidade">
+                <button type="submit">Filtrar</button>
+            </form>
+            <div id="lista-clubes"></div>
+            <button class="btn-cadastro" onclick="mostrarPagina('cadastro-clube')">Cadastrar-se como Clube/Olheiro</button>
+        </section>
+        <!-- PERFIL CLUBE/EMPRESÁRIO -->
+        <section id="pagina-perfil-clube" style="display:none;">
+            <h2>Perfil do Clube/Empresário</h2>
+            <div id="perfil-clube-detalhe"></div>
+            <button class="btn-voltar" onclick="mostrarPagina('clubes')">Voltar</button>
+        </section>
+        <!-- LOGIN/CADASTRO -->
+        <section id="pagina-login" style="display:none;">
+            <h2>Login</h2>
+            <form onsubmit="loginFake(event)">
+                <input type="email" id="login-email" placeholder="E-mail" required>
+                <input type="password" id="login-senha" placeholder="Senha" required>
+                <select id="login-tipo">
+                    <option value="jogador">Jogador</option>
+                    <option value="clube">Clube/Empresário</option>
+                </select>
+                <button type="submit">Entrar</button>
+            </form>
+            <div class="cadastro-links">
+                <a href="#" onclick="mostrarPagina('cadastro-jogador')">Cadastrar-se como Jogador</a> |
+                <a href="#" onclick="mostrarPagina('cadastro-clube')">Cadastrar-se como Clube/Empresário</a>
+            </div>
+        </section>
+        <!-- CADASTRO JOGADOR -->
+        <section id="pagina-cadastro-jogador" style="display:none;">
+            <h2>Cadastro de Jogador</h2>
+            <form onsubmit="cadastrarJogador(event)">
+                <input type="text" id="nome-jogador" placeholder="Nome completo" required>
+                <input type="email" id="email-jogador" placeholder="E-mail" required>
+                <div style="display:flex;gap:0.5em;flex-wrap:wrap;">
+                    <input type="text" id="cep-jogador" placeholder="CEP" maxlength="9" style="flex:2" required>
+                    <button type="button" onclick="buscarCepJogador()" style="flex:1;min-width:100px;">Buscar CEP</button>
+                </div>
+                <input type="text" id="cidade-jogador" placeholder="Cidade" required>
+                <input type="text" id="rua-jogador" placeholder="Rua" required>
+                <select id="posicao-jogador" required>
+                    <option value="">Posição</option>
+                    <option>Atacante</option>
+                    <option>Zagueiro</option>
+                    <option>Goleiro</option>
+                    <option>Volante</option>
+                    <option>Lateral</option>
+                </select>
+                <textarea id="descricao-jogador" placeholder="Estilo de jogo, conquistas, etc." required></textarea>
+                <input type="text" id="contato-jogador" placeholder="Contato (WhatsApp, Instagram, etc.)" required>
+                <input type="url" id="video-jogador" placeholder="Link de vídeo (YouTube, Instagram, etc.)">
+                <button type="submit">Cadastrar Jogador</button>
+            </form>
+            <button class="btn-voltar" onclick="mostrarPagina('jogadores')">Voltar</button>
+        </section>
+        <!-- CADASTRO CLUBE -->
+        <section id="pagina-cadastro-clube" style="display:none;">
+            <h2>Cadastro de Clube/Olheiro/Empresário</h2>
+            <form onsubmit="cadastrarClube(event)">
+                <input type="text" id="nome-clube" placeholder="Nome do clube/olheiro" required>
+                <input type="email" id="email-clube" placeholder="E-mail" required>
+                <input type="text" id="cidade-clube" placeholder="Cidade" required>
+                <input type="text" id="contato-clube" placeholder="Contato (WhatsApp, Instagram, etc.)" required>
+                <select id="interesse-clube" required>
+                    <option value="">Tipo de interesse</option>
+                    <option>Base</option>
+                    <option>Profissional</option>
+                    <option>Peneiras</option>
+                    <option>Outros</option>
+                </select>
+                <button type="submit">Cadastrar Clube/Olheiro</button>
+            </form>
+            <button class="btn-voltar" onclick="mostrarPagina('clubes')">Voltar</button>
+        </section>
+    </main>
+    <footer class="footer-animado">
+        <p>© 2024 Futebol para Todos - Projeto Voluntário de Futebol Social</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
