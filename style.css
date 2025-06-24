@@ -1,35 +1,49 @@
-/* Reset e fontes */
+/* Paleta principal */
+:root {
+    --verde-escuro: #388e3c;
+    --verde-claro: #43a047;
+    --azul: #1976d2;
+    --amarelo: #ffe066;
+    --cinza-claro: #f7f7f7;
+    --cinza-medio: #e5e5e5;
+    --cinza-escuro: #444;
+    --branco: #fff;
+}
+
+/* Fundo geral */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #f7f7f7;
-    color: #222;
+    background: linear-gradient(135deg, var(--cinza-claro) 0%, #e0f7fa 100%);
+    color: var(--cinza-escuro);
     min-width: 0;
 }
 
 /* Header e navegação */
 .apple-header {
-    background: #fff;
-    color: #222;
+    background: var(--branco);
+    color: var(--verde-escuro);
     text-align: center;
     padding: 2em 0 1em 0;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 3px solid var(--amarelo);
 }
 .apple-header h1 {
     font-size: 2em;
     font-weight: 700;
     margin-bottom: 0.2em;
+    color: var(--azul);
+    letter-spacing: 1px;
 }
 .apple-header p {
     font-size: 1.1em;
-    color: #388e3c;
+    color: var(--verde-escuro);
     margin-top: 0;
 }
 .projeto-nome {
     display: block;
     font-size: 1em;
-    color: #555;
+    color: var(--azul);
     margin-top: 0.5em;
     letter-spacing: 1px;
 }
@@ -43,9 +57,9 @@ body {
     margin-top: 1em;
 }
 .main-nav button {
-    background: #fff;
-    color: #388e3c;
-    border: 2px solid #388e3c;
+    background: var(--amarelo);
+    color: var(--azul);
+    border: 2px solid var(--azul);
     border-radius: 18px;
     padding: 0.7em 1.5em;
     font-size: 1em;
@@ -53,11 +67,12 @@ body {
     cursor: pointer;
     min-width: 120px;
     margin-bottom: 0.5em;
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.2s, color 0.2s, border 0.2s;
 }
 .main-nav button:hover, .main-nav button:focus {
-    background: #388e3c;
-    color: #fff;
+    background: var(--azul);
+    color: var(--amarelo);
+    border: 2px solid var(--verde-escuro);
 }
 @media (max-width: 700px) {
     .main-nav {
@@ -81,30 +96,32 @@ section, .feed-section, .card-form, .card-lista, .apresentacao {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
-    background: #fff;
+    background: var(--branco);
     border-radius: 12px;
     padding: 2em 1.5em 1.5em 1.5em;
     margin-bottom: 1.5em;
-    border: 1px solid #e5e5e5;
-    box-shadow: none;
+    border: 2px solid var(--cinza-medio);
+    box-shadow: 0 2px 12px #1976d210;
 }
 .apresentacao {
     text-align: center;
     margin-top: 2em;
+    border-left: 8px solid var(--azul);
+    background: linear-gradient(90deg, var(--amarelo) 0 10%, var(--branco) 10% 100%);
 }
 .apresentacao h2 {
     font-size: 1.3em;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 0.5em;
-    color: #388e3c;
+    color: var(--azul);
 }
 .apresentacao p {
     font-size: 1.05em;
-    color: #444;
+    color: var(--cinza-escuro);
     margin-bottom: 0.7em;
 }
 .projeto-nome-destaque {
-    color: #222;
+    color: var(--verde-escuro);
     font-size: 1em;
     margin-top: 1em;
 }
@@ -112,9 +129,9 @@ section, .feed-section, .card-form, .card-lista, .apresentacao {
 /* Feed */
 .feed-section h2 {
     font-size: 1.1em;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 1em;
-    color: #388e3c;
+    color: var(--verde-escuro);
 }
 .form-feed {
     display: flex;
@@ -126,7 +143,7 @@ section, .feed-section, .card-form, .card-lista, .apresentacao {
 .form-feed textarea {
     font-size: 1em;
     border-radius: 8px;
-    border: 1px solid #d1d1d6;
+    border: 1.5px solid var(--azul);
     background: #f9f9f9;
     padding: 0.8em;
     resize: vertical;
@@ -134,9 +151,9 @@ section, .feed-section, .card-form, .card-lista, .apresentacao {
 }
 .form-feed input:focus,
 .form-feed textarea:focus {
-    border: 1.5px solid #388e3c;
+    border: 2px solid var(--verde-escuro);
     outline: none;
-    background: #fff;
+    background: var(--amarelo);
     box-shadow: 0 0 0 2px #388e3c22;
 }
 .form-feed button {
@@ -144,7 +161,15 @@ section, .feed-section, .card-form, .card-lista, .apresentacao {
     width: auto;
     min-width: 140px;
     padding: 0.7em 1.5em;
-    margin-top: 0.5em;
+    background: var(--azul);
+    color: var(--amarelo);
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+}
+.form-feed button:hover {
+    background: var(--verde-claro);
+    color: var(--branco);
 }
 #feed-lista {
     display: flex;
@@ -152,50 +177,56 @@ section, .feed-section, .card-form, .card-lista, .apresentacao {
     gap: 1em;
 }
 .feed-card {
-    background: #f7f7f7;
+    background: var(--cinza-claro);
     border-radius: 8px;
-    border-left: 4px solid #43a047;
+    border-left: 6px solid var(--verde-claro);
     padding: 1em 1em 0.7em 1em;
 }
 .feed-card h3 {
     margin: 0 0 0.3em 0;
     font-size: 1em;
-    color: #222;
-    font-weight: 600;
+    color: var(--azul);
+    font-weight: 700;
 }
 .feed-card p {
     margin: 0 0 0.5em 0;
-    color: #444;
+    color: var(--cinza-escuro);
     font-size: 0.98em;
 }
 .feed-card .feed-data {
     font-size: 0.9em;
-    color: #888;
+    color: var(--verde-escuro);
     text-align: right;
 }
 
 /* Cards de jogador/clube */
 .card-jogador, .card-clube {
-    background: #f7f7f7;
+    background: var(--cinza-claro);
     border-radius: 8px;
-    border-left: 4px solid #43a047;
+    border-left: 6px solid var(--azul);
     padding: 1em 1em 0.7em 1em;
     margin-bottom: 1em;
     word-break: break-word;
+    transition: box-shadow 0.2s, border 0.2s;
+    box-shadow: 0 1px 8px #1976d210;
+}
+.card-jogador:hover, .card-clube:hover {
+    border-left: 6px solid var(--verde-escuro);
+    box-shadow: 0 2px 16px #388e3c22;
 }
 .card-jogador h3, .card-clube h3 {
     margin: 0 0 0.3em 0;
     font-size: 1em;
-    color: #222;
-    font-weight: 600;
+    color: var(--azul);
+    font-weight: 700;
 }
 .card-jogador p, .card-clube p {
     margin: 0 0 0.5em 0;
-    color: #444;
+    color: var(--cinza-escuro);
     font-size: 0.98em;
 }
 .card-jogador a {
-    color: #0071e3;
+    color: var(--verde-escuro);
     text-decoration: underline;
     font-weight: 500;
 }
@@ -226,47 +257,48 @@ form, .form-feed {
 input, select, textarea, button {
     font-size: 1em;
     border-radius: 8px;
-    border: 1px solid #d1d1d6;
+    border: 1px solid var(--azul);
     background: #f9f9f9;
     padding: 0.8em;
     margin-bottom: 0.5em;
     box-sizing: border-box;
 }
 input:focus, select:focus, textarea:focus {
-    border: 1.5px solid #388e3c;
+    border: 2px solid var(--verde-claro);
     outline: none;
-    background: #fff;
+    background: var(--amarelo);
 }
 button {
-    background: #388e3c;
-    color: #fff;
+    background: var(--verde-escuro);
+    color: var(--amarelo);
     border: none;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
     border-radius: 8px;
     transition: background 0.2s, color 0.2s;
 }
 button:hover, button:focus {
-    background: #43a047;
-    color: #fff;
+    background: var(--azul);
+    color: var(--branco);
 }
 
 /* Botões de ação */
 .btn-cadastro, .btn-voltar {
-    background: #fff;
-    color: #388e3c;
-    border: 2px solid #388e3c;
+    background: var(--amarelo);
+    color: var(--azul);
+    border: 2px solid var(--azul);
     border-radius: 8px;
     padding: 0.7em 1.5em;
     font-size: 1em;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     margin: 1em 0 0 0;
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.2s, color 0.2s, border 0.2s;
 }
 .btn-cadastro:hover, .btn-voltar:hover {
-    background: #388e3c;
-    color: #fff;
+    background: var(--verde-escuro);
+    color: var(--amarelo);
+    border: 2px solid var(--verde-escuro);
 }
 
 /* Links de cadastro */
@@ -275,52 +307,52 @@ button:hover, button:focus {
     margin-top: 1em;
 }
 .cadastro-links a {
-    color: #388e3c;
+    color: var(--azul);
     text-decoration: underline;
     font-weight: 500;
     margin: 0 0.5em;
 }
 
-/* Footer */
-.footer-animado {
-    background: #fff;
-    color: #888;
-    text-align: center;
-    padding: 2em 0 1em 0;
-    font-size: 1em;
-    border-top: 1px solid #e5e5e5;
-    margin-top: 2em;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* Estilos para páginas de perfil */
+/* Perfil */
 #pagina-perfil-jogador, #pagina-perfil-clube {
-    background: #fff;
+    background: var(--branco);
     border-radius: 12px;
     padding: 2em 1.5em 1.5em 1.5em;
     margin: 2em auto 1.5em auto;
     max-width: 500px;
     box-sizing: border-box;
-    border: 1px solid #e5e5e5;
-    box-shadow: none;
+    border: 2px solid var(--azul);
+    box-shadow: 0 2px 12px #1976d210;
 }
 #perfil-jogador-detalhe h3,
 #perfil-clube-detalhe h3 {
     margin-top: 0;
-    color: #388e3c;
+    color: var(--verde-escuro);
     font-size: 1.2em;
 }
 #perfil-jogador-detalhe p,
 #perfil-clube-detalhe p {
     margin: 0.5em 0;
-    color: #444;
+    color: var(--cinza-escuro);
     font-size: 1em;
 }
 #perfil-jogador-detalhe a {
-    color: #0071e3;
+    color: var(--azul);
     text-decoration: underline;
     font-weight: 500;
+}
+
+/* Footer */
+.footer-animado {
+    background: var(--azul);
+    color: var(--amarelo);
+    text-align: center;
+    padding: 2em 0 1em 0;
+    font-size: 1em;
+    border-top: 3px solid var(--verde-escuro);
+    margin-top: 2em;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Responsividade */
@@ -343,3 +375,5 @@ button:hover, button:focus {
         font-size: 1em;
     }
 }
+
+/* ...fim... */
